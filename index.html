@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <h1>
+        <div>My counter</div>
+        <div class="counter">0</div>
+    </h1>
+    <button onclick="store.dispatch({type:'++'})">Increase counter</button>
+    <button onclick="store.dispatch({type:'--'})">Decrease counter</button>
+
+    <script>
+
+
+
+        const myThunk = (arg) => (dispatch, state) => {
+            // use some code with dispatch
+            // serverapi
+            dispatch({ type: 'LIST_DATA', payload: 'data' })
+        }
+
+        var store = new Store({
+            counter: 0
+        }, Reducers);
+        let counter = document.getElementsByClassName('counter')[0];
+
+        var subs = store.subscribe((state, prev) => {
+            debugger;
+            counter.innerHTML = state.counter;
+        })
+    </script>
+</body>
+
+</html>
